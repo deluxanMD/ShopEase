@@ -1,0 +1,40 @@
+name: Pull request into main and release branches
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+      - 'release/beta'
+      - 'release/prod'
+
+jobs:
+  format-and-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Node modules
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Prettier
+        run: npm run format:check
+
+      - name: Jest
+        run: npm run test
+
+      - name: Code Coverage
+        run: npm run coverage
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
