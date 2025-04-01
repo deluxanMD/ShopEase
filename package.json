@@ -14,8 +14,10 @@
     "coverage": "jest --coverage"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.6.1",
     "react": "19.0.0",
-    "react-native": "0.78.2"
+    "react-native": "0.78.2",
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
