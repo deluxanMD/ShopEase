@@ -12,7 +12,9 @@ interface Props {
 const ErrorMessage = ({error}: Props) => {
   return (
     <View>
-      <Text style={styles.message}>{error?.message}</Text>
+      <Text style={styles.message} testID="error-message">
+        {error?.message}
+      </Text>
     </View>
   );
 };
