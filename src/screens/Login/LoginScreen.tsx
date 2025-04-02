@@ -12,9 +12,7 @@ const LoginScreen = () => {
   const form = useLoginForm();
   const navigation = useNavigation<NavigationProp>();
 
-  const login = async (data: any) => {
-    console.log('login', data);
-  };
+  const login = async () => {};
 
   const navigateToApp = () => {
     navigation.navigate('App');
