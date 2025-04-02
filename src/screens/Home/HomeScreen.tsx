@@ -3,23 +3,16 @@ import React from 'react';
 
 import HomeHeader from '../../components/HomeHeader/HomeHeader';
 import styles from './HomeScreenStyles';
-import {useHomeScreen} from './HomeScreenHooks';
-import ProductHList from '../../components/ProductHList/ProductHList';
+import ProductsList from '../../components/ProductsList/ProductsList';
 
 const HomeScreen = () => {
-  const {topSellings, newArrivals} = useHomeScreen();
-
   return (
     <ScrollView style={styles.container} testID="HomeScreen">
       <View style={styles.headerContainer}>
         <HomeHeader />
       </View>
-      <View style={styles.productsListContainer}>
-        <ProductHList title="Top selling" data={topSellings} />
-      </View>
-      <View style={styles.productsListContainer}>
-        <ProductHList title="New Arrivals" data={newArrivals} />
-      </View>
+      <ProductsList title="Top selling" isTop />
+      <ProductsList title="New arrivals" />
     </ScrollView>
   );
 };

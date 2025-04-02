@@ -1,4 +1,4 @@
-import {FlatList, View} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 import React from 'react';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
@@ -6,12 +6,14 @@ import {Product} from '../../types/ProductsTypes';
 import ProductPortrait from '../ProductPortrait/ProductPortrait';
 import styles from './ProductHListStyles';
 
-interface Props {
+type Props = {
   title: string;
   data: Product[];
-}
+  loading: boolean;
+  onEndReached: () => void;
+};
 
-const ProductHList = ({title, data}: Props) => {
+const ProductHList = ({title, data, loading, onEndReached}: Props) => {
   return (
     <View>
       <SectionTitle title={title} style={styles.title} />
@@ -19,6 +21,10 @@ const ProductHList = ({title, data}: Props) => {
         data={data}
         horizontal
         showsHorizontalScrollIndicator={false}
+        onEndReached={onEndReached}
+        onEndReachedThreshold={0.5}
+        keyExtractor={item => item.id.toString()}
+        ListFooterComponent={loading ? <Text>Loading...</Text> : null}
         renderItem={({item}) => (
           <View key={item.id}>
             <ProductPortrait product={item} />
