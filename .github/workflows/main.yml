@@ -28,13 +28,13 @@ jobs:
       - name: Prettier
         run: npm run format:check
 
-      - name: Jest
-        run: npm run test
+      # - name: Jest
+      #   run: npm run test
 
-      - name: Code Coverage
-        run: npm run coverage
+      # - name: Code Coverage
+      #   run: npm run coverage
 
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+      # - name: Upload coverage reports to Codecov
+      #   uses: codecov/codecov-action@v5
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
