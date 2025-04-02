@@ -11,6 +11,7 @@
     "format:check": "prettier --check .",
     "start": "react-native start",
     "test": "jest",
+    "test:watch": "jest --watch",
     "coverage": "jest --coverage"
   },
   "dependencies": {

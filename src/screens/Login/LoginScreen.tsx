@@ -29,11 +29,19 @@ const LoginScreen = () => {
       <View style={styles.formContainer}>
         <LoginForm control={form.control} />
         <View style={styles.loginBtn}>
-          <CustomButton title="Login" onPress={form.handleSubmit(login)} />
+          <CustomButton
+            title="Login"
+            onPress={form.handleSubmit(login)}
+            testID="login-button"
+          />
         </View>
       </View>
       <View style={styles.goToAppBtn}>
-        <CustomButton title="Goto App" onPress={navigateToApp} />
+        <CustomButton
+          title="Goto App"
+          onPress={navigateToApp}
+          testID="goto-button"
+        />
       </View>
     </View>
   );
