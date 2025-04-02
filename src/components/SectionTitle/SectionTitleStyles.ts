@@ -4,13 +4,14 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
-  userImage: {
-    width: 35,
-    height: 35,
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
-  userDetails: {
-    marginLeft: 10,
+  linkText: {
+    fontSize: 16,
   },
 });
 

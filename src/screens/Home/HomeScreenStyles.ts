@@ -8,6 +8,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: colors.white,
   },
+  headerContainer: {
+    marginTop: 10,
+  },
+  productsListContainer: {
+    marginTop: 20,
+  },
+  hListContainer: {
+    marginVertical: 10,
+  },
 });
 
 export default styles;
