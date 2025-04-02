@@ -1,12 +1,22 @@
 import React from 'react';
 
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationProp,
+} from '@react-navigation/native-stack';
 
 import LoginScreen from '../screens/Login/LoginScreen';
 import BottomNavigation from './BottomNavigation';
 
+type RootStackParamList = {
+  Login: undefined;
+  App: undefined;
+};
+
+export type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
 const StackNavigation = () => {
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
     <Stack.Navigator
