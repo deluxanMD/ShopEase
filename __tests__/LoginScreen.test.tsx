@@ -30,9 +30,7 @@ test('login button', async () => {
 });
 
 test('goto button', async () => {
-  // const navigation = {navigate: jest.fn()};
-
-  const {getByTestId, getByText} = render(
+  const {getByTestId} = render(
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Login" component={LoginScreen} />
@@ -47,6 +45,6 @@ test('goto button', async () => {
   fireEvent.press(gotoButton);
 
   await waitFor(() => {
-    expect(getByText('HomeScreen')).toBeTruthy();
+    expect(getByTestId('HomeScreen')).toBeTruthy();
   });
 });
