@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   productsListContainer: {
-    marginTop: 20,
+    marginVertical: 10,
   },
   hListContainer: {
     marginVertical: 10,
