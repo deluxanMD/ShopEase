@@ -7,10 +7,12 @@ import {
 
 import LoginScreen from '../screens/Login/LoginScreen';
 import BottomNavigation from './BottomNavigation';
+import CategoriesScreen from '../screens/Categories/CategoriesScreen';
 
 type RootStackParamList = {
   Login: undefined;
   App: undefined;
+  Categories: undefined;
 };
 
 export type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -21,9 +23,10 @@ const StackNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName="Login">
+      initialRouteName="App">
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="App" component={BottomNavigation} />
+      <Stack.Screen name="Categories" component={CategoriesScreen} />
     </Stack.Navigator>
   );
 };

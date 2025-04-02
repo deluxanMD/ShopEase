@@ -23,7 +23,7 @@ const BottomNavigation = () => {
             <FontAwesomeIcon
               icon={faHome}
               size={24}
-              color={focused ? colors.primary : colors.lightGray}
+              color={focused ? colors.primary : colors.gray}
             />
           ),
           tabBarShowLabel: false,
@@ -37,7 +37,7 @@ const BottomNavigation = () => {
             <FontAwesomeIcon
               icon={faCartShopping}
               size={24}
-              color={focused ? colors.primary : colors.lightGray}
+              color={focused ? colors.primary : colors.gray}
             />
           ),
           tabBarShowLabel: false,
