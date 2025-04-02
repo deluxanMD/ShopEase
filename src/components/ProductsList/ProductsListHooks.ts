@@ -52,5 +52,5 @@ export const useProductsList = (isTop: boolean) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [skip]);
 
-  return {products, loading, getMoreProducts};
+  return {products, loading, skip, getMoreProducts};
 };

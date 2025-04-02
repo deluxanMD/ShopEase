@@ -1,10 +1,11 @@
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import React from 'react';
 
 import SectionTitle from '../SectionTitle/SectionTitle';
 import {Product} from '../../types/ProductsTypes';
 import ProductPortrait from '../ProductPortrait/ProductPortrait';
 import styles from './ProductHListStyles';
+import ProductSkeleton from '../Skeleton/Product/ProductSkeleton';
 
 type Props = {
   title: string;
@@ -24,7 +25,7 @@ const ProductHList = ({title, data, loading, onEndReached}: Props) => {
         onEndReached={onEndReached}
         onEndReachedThreshold={0.5}
         keyExtractor={item => item.id.toString()}
-        ListFooterComponent={loading ? <Text>Loading...</Text> : null}
+        ListFooterComponent={loading ? <ProductSkeleton /> : null}
         renderItem={({item}) => (
           <View key={item.id}>
             <ProductPortrait product={item} />
