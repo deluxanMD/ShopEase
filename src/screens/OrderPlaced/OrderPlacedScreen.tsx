@@ -4,9 +4,12 @@ import styles from './OrderPlacedStyles';
 import CenteredButton from '../../components/CenteredButton/CenteredButton';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProp} from '../../navigations/StackNavigation';
+import {useDispatch} from 'react-redux';
+import {resetCart} from '../../store/cart/CartSlice';
 
 const OrderPlacedScreen = () => {
   const navigation = useNavigation<NavigationProp>();
+  const dispatch = useDispatch();
 
   return (
     <View style={styles.container}>
@@ -24,9 +27,10 @@ const OrderPlacedScreen = () => {
         <View style={styles.button}>
           <CenteredButton
             text="Browse More"
-            onPress={() =>
-              navigation.reset({index: 0, routes: [{name: 'App'}]})
-            }
+            onPress={() => {
+              navigation.reset({index: 0, routes: [{name: 'App'}]});
+              dispatch(resetCart());
+            }}
           />
         </View>
       </View>

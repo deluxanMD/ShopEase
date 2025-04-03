@@ -74,6 +74,19 @@ export const cartSlice = createSlice({
         state.checkout.paymentDetails = action.payload;
       }
     },
+    resetCart: state => {
+      state.cartItems = [];
+      state.accounts = {
+        subtotal: 0,
+        shippingCost: 5,
+        tax: 0,
+        total: 0,
+      };
+      state.checkout = {
+        address: 'Add Shipping Address',
+        paymentDetails: 'Add Payment Method',
+      };
+    },
   },
 });
 
@@ -83,6 +96,7 @@ export const {
   updateQuantity,
   saveAddress,
   savePaymentDetails,
+  resetCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;
