@@ -1,9 +1,11 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import {Alert} from 'react-native';
 
 import axios from 'axios';
 
 import {Product} from '../../types/ProductsTypes';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store';
 
 export const useProductDetails = (productId: number) => {
   const [product, setProduct] = useState<Product | null>(null);
@@ -59,4 +61,15 @@ export const useQuantity = () => {
     increaseQuantity,
     decreaseQuantity,
   };
+};
+
+export const useCart = (product: Product | null) => {
+  const cartItems = useSelector((state: RootState) => state.cart.cartItems);
+
+  const isAdded = useMemo(
+    () => cartItems?.some(item => item.id === product?.id),
+    [cartItems, product?.id],
+  );
+
+  return {isAdded};
 };

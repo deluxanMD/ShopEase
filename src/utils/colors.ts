@@ -4,7 +4,8 @@ export const colors = {
   tertiary: '#E9A5F1',
   black: '#000000',
   white: '#FFFFFF',
-  gray: '#CCCCCC',
+  gray: '#808080',
+  mediumGray: '#C0C0C0',
   lightGray: '#EEEEEE',
   error: '#F16767',
 };
