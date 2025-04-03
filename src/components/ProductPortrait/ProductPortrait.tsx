@@ -1,18 +1,28 @@
-import {View, Text, Image} from 'react-native';
+import {Text, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 import styles from './ProductPortraitStyles';
 import {Product} from '../../types/ProductsTypes';
 import {faHeart} from '@fortawesome/free-regular-svg-icons/faHeart';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {useNavigation} from '@react-navigation/native';
+import {NavigationProp} from '../../navigations/StackNavigation';
 
 interface Props {
   product: Product;
 }
 
 const ProductPortrait = ({product}: Props) => {
+  const navigation = useNavigation<NavigationProp>();
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() =>
+        navigation.navigate('ProductDetails', {
+          productId: product.id,
+        })
+      }>
       <FontAwesomeIcon icon={faHeart} style={styles.heart} />
       <Image
         source={{uri: product.thumbnail}}
@@ -23,7 +33,7 @@ const ProductPortrait = ({product}: Props) => {
         {product.title}
       </Text>
       <Text style={styles.price}>${product.price}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
