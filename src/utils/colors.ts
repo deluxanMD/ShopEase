@@ -5,6 +5,6 @@ export const colors = {
   black: '#000000',
   white: '#FFFFFF',
   gray: '#CCCCCC',
-  lightGray: '#F5F5F5',
+  lightGray: '#EEEEEE',
   error: '#F16767',
 };
