@@ -5,10 +5,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faHome} from '@fortawesome/free-solid-svg-icons/faHome';
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons/faCartShopping';
+import {faHeart} from '@fortawesome/free-solid-svg-icons/faHeart';
 
 import HomeScreen from '../screens/Home/HomeScreen';
 import CartScreen from '../screens/Cart/CartScreen';
 import {colors} from '../utils/colors';
+import WishlistScreen from '../screens/Wishlist/WishlistScreen';
 
 const BottomNavigation = () => {
   const Tab = createBottomTabNavigator();
@@ -22,6 +24,20 @@ const BottomNavigation = () => {
           tabBarIcon: ({focused}) => (
             <FontAwesomeIcon
               icon={faHome}
+              size={24}
+              color={focused ? colors.primary : colors.gray}
+            />
+          ),
+          tabBarShowLabel: false,
+        }}
+      />
+      <Tab.Screen
+        name="Wishlist"
+        component={WishlistScreen}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <FontAwesomeIcon
+              icon={faHeart}
               size={24}
               color={focused ? colors.primary : colors.gray}
             />
