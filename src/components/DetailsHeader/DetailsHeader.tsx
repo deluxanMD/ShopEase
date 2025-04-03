@@ -11,7 +11,10 @@ import {useNavigation} from '@react-navigation/native';
 import {NavigationProp} from '../../navigations/StackNavigation';
 import {Product} from '../../types/ProductsTypes';
 import {useDispatch, useSelector} from 'react-redux';
-import {addToWishlist} from '../../store/wishlist/WishlistSlice';
+import {
+  addToWishlist,
+  removeFromWishlist,
+} from '../../store/wishlist/WishlistSlice';
 import {RootState} from '../../store';
 import {colors} from '../../utils/colors';
 
@@ -33,6 +36,14 @@ const DetailsHeader = ({product}: Props) => {
 
   const goBack = () => navigation.goBack();
 
+  const handleWishlistToggle = () => {
+    if (isAdded) {
+      dispatch(removeFromWishlist(product!));
+    } else {
+      dispatch(addToWishlist(product!));
+    }
+  };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.iconContainer} onPress={goBack}>
@@ -41,7 +52,7 @@ const DetailsHeader = ({product}: Props) => {
       {!!product && (
         <TouchableOpacity
           style={styles.iconContainer}
-          onPress={() => dispatch(addToWishlist(product))}>
+          onPress={handleWishlistToggle}>
           <FontAwesomeIcon
             icon={isAdded ? faHeartsolid : faHeartRegular}
             size={20}
