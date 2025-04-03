@@ -1,6 +1,8 @@
-import {View, Text} from 'react-native';
+import {View, FlatList} from 'react-native';
 import React from 'react';
 import {Product} from '../../types/ProductsTypes';
+import styles from './ProductsGridStyles';
+import ProductPortrait from '../ProductPortrait/ProductPortrait';
 
 interface Props {
   products: Product[];
@@ -8,8 +10,17 @@ interface Props {
 
 const ProductsGrid = ({products}: Props) => {
   return (
-    <View>
-      <Text>ProductsGrid</Text>
+    <View style={styles.container}>
+      <FlatList
+        data={products}
+        keyExtractor={item => item.id.toString()}
+        numColumns={2}
+        renderItem={({item}) => (
+          <View key={item.id} style={styles.item}>
+            <ProductPortrait product={item} />
+          </View>
+        )}
+      />
     </View>
   );
 };

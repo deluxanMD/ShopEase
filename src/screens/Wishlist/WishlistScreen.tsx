@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {Text, View} from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store';
@@ -15,7 +15,10 @@ const WishlistScreen = () => {
   return (
     <View style={styles.container}>
       {wishlistItems?.length > 0 ? (
-        <ProductsGrid products={wishlistItems} />
+        <>
+          <Text style={styles.title}>Wishlist</Text>
+          <ProductsGrid products={wishlistItems} />
+        </>
       ) : (
         <Empty icon={faHeart} message="Your wishlist is empty" />
       )}
