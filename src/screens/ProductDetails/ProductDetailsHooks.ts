@@ -47,3 +47,16 @@ export const useProductDetails = (productId: number) => {
 
   return {product, loading};
 };
+
+export const useQuantity = () => {
+  const [quantity, setQuantity] = useState(1);
+
+  const increaseQuantity = () => setQuantity(prev => prev + 1);
+  const decreaseQuantity = () => setQuantity(prev => prev - 1);
+
+  return {
+    quantity,
+    increaseQuantity,
+    decreaseQuantity,
+  };
+};

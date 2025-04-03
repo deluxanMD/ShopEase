@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import styles from './DetailsHeaderStyles';
 import {faChevronLeft} from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 import {faHeart as faHeartRegular} from '@fortawesome/free-regular-svg-icons/faHeart';
-import {faHeart as faHeartsolid} from '@fortawesome/free-solid-svg-icons/faHeart';
+// import {faHeart as faHeartsolid} from '@fortawesome/free-solid-svg-icons/faHeart';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProp} from '../../navigations/StackNavigation';
 
