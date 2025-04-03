@@ -10,7 +10,6 @@ import {useProductDetails, useQuantity} from './ProductDetailsHooks';
 import ProductImages from '../../components/ProductImages/ProductImages';
 import ProductInfo from '../../components/ProductInfo/ProductInfo';
 import AddToCart from '../../components/AddToCart/AddToCart';
-import {useProductPrice} from '../../components/ProductInfo/ProductInfoHooks';
 import ProductDetailSkeleton from '../../components/Skeleton/ProductDetail/ProductDetailSkeleton';
 import ButtonSkeleton from '../../components/Skeleton/Button/ButtonSkeleton';
 
@@ -22,11 +21,6 @@ const ProductDetailsScreen = () => {
   const {product, loading} = useProductDetails(productId);
 
   const {quantity, increaseQuantity, decreaseQuantity} = useQuantity();
-
-  const discountedPrice = useProductPrice(
-    product?.price || 0,
-    product?.discountPercentage || 0,
-  );
 
   return (
     <View style={styles.container}>
@@ -51,9 +45,7 @@ const ProductDetailsScreen = () => {
       {loading ? (
         <ButtonSkeleton />
       ) : (
-        !!product && (
-          <AddToCart total={(Number(discountedPrice) * quantity).toFixed(2)} />
-        )
+        !!product && <AddToCart quantity={quantity} product={product} />
       )}
     </View>
   );

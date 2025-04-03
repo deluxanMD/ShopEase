@@ -4,9 +4,10 @@ import React from 'react';
 import styles from './QuantityControllerStyles';
 import {Product} from '../../types/ProductsTypes';
 import {colors} from '../../utils/colors';
+import {useCart} from '../../screens/ProductDetails/ProductDetailsHooks';
 
 interface Props {
-  product: Partial<Product>;
+  product: Product;
   quantity: number;
   increaseQuantity: () => void;
   decreaseQuantity: () => void;
@@ -18,6 +19,8 @@ const QuantityController = ({
   increaseQuantity,
   decreaseQuantity,
 }: Props) => {
+  const {isAdded} = useCart(product);
+
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>
@@ -29,10 +32,16 @@ const QuantityController = ({
           <TouchableOpacity
             style={[
               styles.button,
-              {backgroundColor: quantity < 2 ? colors.gray : colors.primary},
+              {
+                backgroundColor: isAdded
+                  ? colors.gray
+                  : quantity < 2
+                  ? colors.gray
+                  : colors.primary,
+              },
             ]}
             onPress={decreaseQuantity}
-            disabled={quantity < 2}>
+            disabled={isAdded ? true : quantity < 2}>
             <Text style={styles.buttonText}>-</Text>
           </TouchableOpacity>
           <Text>{quantity}</Text>
@@ -40,12 +49,15 @@ const QuantityController = ({
             style={[
               styles.button,
               {
-                backgroundColor:
-                  quantity >= product?.stock ? colors.gray : colors.primary,
+                backgroundColor: isAdded
+                  ? colors.gray
+                  : quantity >= product?.stock
+                  ? colors.gray
+                  : colors.primary,
               },
             ]}
             onPress={increaseQuantity}
-            disabled={quantity >= product?.stock}>
+            disabled={isAdded ? true : quantity >= product?.stock}>
             <Text style={styles.buttonText}>+</Text>
           </TouchableOpacity>
         </View>

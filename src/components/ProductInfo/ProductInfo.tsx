@@ -7,7 +7,7 @@ import {useProductPrice} from './ProductInfoHooks';
 import QuantityController from '../QuantityController/QuantityController';
 
 interface Props {
-  product: Partial<Product>;
+  product: Product;
   quantity: number;
   increaseQuantity: () => void;
   decreaseQuantity: () => void;
