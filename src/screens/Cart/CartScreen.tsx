@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../../store';
 import EmptyCart from '../../components/EmptyCart/EmptyCart';
 import styles from './CartScreenStyles';
+import CartWithProduct from '../../components/CartWithProduct/CartWithProduct';
 // import Header from '../../components/Header/Header';
 
 const CartScreen = () => {
@@ -14,7 +15,7 @@ const CartScreen = () => {
   return (
     <View style={styles.container}>
       {/* <Header /> */}
-      {cart?.cartItems.length > 0 ? <></> : <EmptyCart />}
+      {cart?.cartItems.length > 0 ? <CartWithProduct /> : <EmptyCart />}
     </View>
   );
 };

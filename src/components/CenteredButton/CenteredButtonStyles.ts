@@ -2,15 +2,15 @@ import {StyleSheet} from 'react-native';
 import {colors} from '../../utils/colors';
 
 const styles = StyleSheet.create({
-  btnContainer: {
-    backgroundColor: colors.primary,
-    borderRadius: 100,
+  container: {
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 15,
+    borderRadius: 100,
   },
-  btnText: {
+  text: {
     color: colors.white,
-    fontWeight: 700,
+    fontSize: 16,
   },
 });
 

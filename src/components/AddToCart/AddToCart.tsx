@@ -31,7 +31,7 @@ const AddToCart = ({product, quantity}: Props) => {
         styles.container,
         {backgroundColor: isAdded ? colors.gray : colors.primary},
       ]}
-      onPress={() => dispatch(addToCart(product))}
+      onPress={() => dispatch(addToCart({...product, quantity}))}
       disabled={isAdded}>
       {!isAdded && (
         <Text style={[styles.text, styles.total]}>

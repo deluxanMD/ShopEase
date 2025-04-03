@@ -1,4 +1,4 @@
-import {View, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity, Text} from 'react-native';
 import React from 'react';
 
 import styles from './HeaderStyles';
@@ -7,7 +7,11 @@ import {faChevronLeft} from '@fortawesome/free-solid-svg-icons/faChevronLeft';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProp} from '../../navigations/StackNavigation';
 
-const Header = () => {
+interface Props {
+  title?: string;
+}
+
+const Header = ({title}: Props) => {
   const navigation = useNavigation<NavigationProp>();
 
   const goBack = () => navigation.goBack();
@@ -17,6 +21,7 @@ const Header = () => {
       <TouchableOpacity style={styles.iconContainer} onPress={goBack}>
         <FontAwesomeIcon icon={faChevronLeft} size={20} />
       </TouchableOpacity>
+      <Text>{title}</Text>
     </View>
   );
 };
