@@ -3,8 +3,6 @@ import React from 'react';
 
 import styles from './ProductPortraitStyles';
 import {Product} from '../../types/ProductsTypes';
-import {faHeart} from '@fortawesome/free-regular-svg-icons/faHeart';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {useNavigation} from '@react-navigation/native';
 import {NavigationProp} from '../../navigations/StackNavigation';
 
@@ -23,7 +21,6 @@ const ProductPortrait = ({product}: Props) => {
           productId: product.id,
         })
       }>
-      <FontAwesomeIcon icon={faHeart} style={styles.heart} />
       <Image
         source={{uri: product.thumbnail}}
         height={250}
