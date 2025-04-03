@@ -14,6 +14,10 @@ export interface CartState {
     tax: number;
     total: number;
   };
+  checkout: {
+    address: string;
+    paymentDetails: string;
+  };
 }
 
 const initialState: CartState = {
@@ -23,6 +27,10 @@ const initialState: CartState = {
     shippingCost: 5,
     tax: 0,
     total: 0,
+  },
+  checkout: {
+    address: 'Add Shipping Address',
+    paymentDetails: 'Add Payment Method',
   },
 };
 
@@ -56,10 +64,39 @@ export const cartSlice = createSlice({
       });
       updateAccounts(state);
     },
+    saveAddress: (state, action: PayloadAction<string>) => {
+      if (action.payload.trim() !== '') {
+        state.checkout.address = action.payload;
+      }
+    },
+    savePaymentDetails: (state, action: PayloadAction<string>) => {
+      if (action.payload.trim() !== '') {
+        state.checkout.paymentDetails = action.payload;
+      }
+    },
+    resetCart: state => {
+      state.cartItems = [];
+      state.accounts = {
+        subtotal: 0,
+        shippingCost: 5,
+        tax: 0,
+        total: 0,
+      };
+      state.checkout = {
+        address: 'Add Shipping Address',
+        paymentDetails: 'Add Payment Method',
+      };
+    },
   },
 });
 
-export const {addToCart, removeItemFromCart, updateQuantity} =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeItemFromCart,
+  updateQuantity,
+  saveAddress,
+  savePaymentDetails,
+  resetCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

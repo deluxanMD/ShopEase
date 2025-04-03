@@ -8,9 +8,12 @@ import {RootState} from '../../store';
 import styles from './CartWithProductStyles';
 import CenteredButton from '../CenteredButton/CenteredButton';
 import AccountSummary from '../AccountSummary/AccountSummary';
+import {useNavigation} from '@react-navigation/native';
+import {NavigationProp} from '../../navigations/StackNavigation';
 
 const CartWithProduct = () => {
   const cart = useSelector((state: RootState) => state.cart);
+  const navigation = useNavigation<NavigationProp>();
 
   const screenHeight = Dimensions.get('screen').height;
 
@@ -22,7 +25,10 @@ const CartWithProduct = () => {
       </View>
       <View>
         <AccountSummary />
-        <CenteredButton text="Checkout" />
+        <CenteredButton
+          text="Checkout"
+          onPress={() => navigation.navigate('Checkout')}
+        />
       </View>
     </View>
   );
