@@ -7,9 +7,14 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../../store';
 import CheckoutModal from '../../components/Modals/CheckoutModal/CheckoutModal';
 import CheckoutScreenProvider from './CheckoutScreenProvider';
+import AccountSummary from '../../components/AccountSummary/AccountSummary';
+import CenteredButton from '../../components/CenteredButton/CenteredButton';
+import {useNavigation} from '@react-navigation/native';
+import {NavigationProp} from '../../navigations/StackNavigation';
 
 const CheckoutScreen = () => {
   const checkout = useSelector((state: RootState) => state.cart.checkout);
+  const navigation = useNavigation<NavigationProp>();
 
   const [addressVisible, setAddressVisible] = useState(false);
   const [valueVisible, setValueVisible] = useState(false);
@@ -35,6 +40,13 @@ const CheckoutScreen = () => {
         />
         <CheckoutModal visible={addressVisible} type="address" />
         <CheckoutModal visible={valueVisible} type="payment" />
+        <View style={styles.bottomContainer}>
+          <AccountSummary />
+          <CenteredButton
+            text="Place order"
+            onPress={() => navigation.navigate('PlaceOrder')}
+          />
+        </View>
       </View>
     </CheckoutScreenProvider>
   );

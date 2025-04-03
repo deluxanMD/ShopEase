@@ -6,11 +6,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     flex: 1,
     paddingHorizontal: 15,
+    justifyContent: 'space-between',
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 20,
+  },
+  bottomContainer: {
+    paddingBottom: 10,
   },
 });
 
