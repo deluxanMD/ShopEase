@@ -4,9 +4,10 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 
 import {RootState} from '../../store';
-import EmptyCart from '../../components/EmptyCart/EmptyCart';
+import Empty from '../../components/Empty/Empty';
 import styles from './CartScreenStyles';
 import CartWithProduct from '../../components/CartWithProduct/CartWithProduct';
+import {faCartShopping} from '@fortawesome/free-solid-svg-icons/faCartShopping';
 // import Header from '../../components/Header/Header';
 
 const CartScreen = () => {
@@ -15,7 +16,11 @@ const CartScreen = () => {
   return (
     <View style={styles.container}>
       {/* <Header /> */}
-      {cart?.cartItems.length > 0 ? <CartWithProduct /> : <EmptyCart />}
+      {cart?.cartItems.length > 0 ? (
+        <CartWithProduct />
+      ) : (
+        <Empty icon={faCartShopping} message="Your cart is empty" />
+      )}
     </View>
   );
 };

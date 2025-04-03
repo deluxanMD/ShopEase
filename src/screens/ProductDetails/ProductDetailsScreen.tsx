@@ -24,7 +24,7 @@ const ProductDetailsScreen = () => {
 
   return (
     <View style={styles.container}>
-      <DetailsHeader />
+      <DetailsHeader product={product} />
       <ScrollView>
         {loading ? (
           <ProductDetailSkeleton />
