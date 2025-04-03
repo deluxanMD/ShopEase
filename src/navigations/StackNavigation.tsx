@@ -9,6 +9,7 @@ import LoginScreen from '../screens/Login/LoginScreen';
 import BottomNavigation from './BottomNavigation';
 import CategoriesScreen from '../screens/Categories/CategoriesScreen';
 import ProductDetailsScreen from '../screens/ProductDetails/ProductDetailsScreen';
+import CheckoutScreen from '../screens/Checkout/CheckoutScreen';
 
 export type RootStackParamList = {
   Login: undefined;
@@ -17,6 +18,7 @@ export type RootStackParamList = {
   ProductDetails: {
     productId: number;
   };
+  Checkout: undefined;
 };
 
 export type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -36,6 +38,7 @@ const StackNavigation = () => {
         component={ProductDetailsScreen}
         initialParams={{productId: 0}}
       />
+      <Stack.Screen name="Checkout" component={CheckoutScreen} />
     </Stack.Navigator>
   );
 };
