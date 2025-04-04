@@ -11,9 +11,12 @@ import HomeScreen from '../screens/Home/HomeScreen';
 import CartScreen from '../screens/Cart/CartScreen';
 import {colors} from '../utils/colors';
 import WishlistScreen from '../screens/Wishlist/WishlistScreen';
+import {useSelector} from 'react-redux';
+import {RootState} from '../store';
 
 const BottomNavigation = () => {
   const Tab = createBottomTabNavigator();
+  const cartItems = useSelector((state: RootState) => state.cart.cartItems);
 
   return (
     <Tab.Navigator screenOptions={{headerShown: false}}>
@@ -56,6 +59,7 @@ const BottomNavigation = () => {
               color={focused ? colors.primary : colors.gray}
             />
           ),
+          tabBarBadge: cartItems.length || undefined,
           tabBarShowLabel: false,
         }}
       />
