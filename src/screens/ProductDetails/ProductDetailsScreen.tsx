@@ -29,7 +29,7 @@ const ProductDetailsScreen = () => {
         {loading ? (
           <ProductDetailSkeleton />
         ) : (
-          <>
+          <View>
             <ProductImages images={product?.images || []} />
             {!!product && (
               <ProductInfo
@@ -39,7 +39,7 @@ const ProductDetailsScreen = () => {
                 decreaseQuantity={decreaseQuantity}
               />
             )}
-          </>
+          </View>
         )}
       </ScrollView>
       {loading ? (
