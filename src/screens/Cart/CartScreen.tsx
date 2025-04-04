@@ -8,14 +8,12 @@ import Empty from '../../components/Empty/Empty';
 import styles from './CartScreenStyles';
 import CartWithProduct from '../../components/CartWithProduct/CartWithProduct';
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons/faCartShopping';
-// import Header from '../../components/Header/Header';
 
 const CartScreen = () => {
   const cart = useSelector((state: RootState) => state.cart);
 
   return (
     <View style={styles.container}>
-      {/* <Header /> */}
       {cart?.cartItems.length > 0 ? (
         <CartWithProduct />
       ) : (

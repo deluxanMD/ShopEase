@@ -1,4 +1,4 @@
-import {View, Dimensions, Text} from 'react-native';
+import {View, Dimensions, Text, ScrollView} from 'react-native';
 import React from 'react';
 
 import {useSelector} from 'react-redux';
@@ -23,13 +23,15 @@ const CartWithProduct = () => {
       <View style={{height: screenHeight / 2}}>
         <CartList products={cart?.cartItems} />
       </View>
-      <View>
-        <AccountSummary />
-        <CenteredButton
-          text="Checkout"
-          onPress={() => navigation.navigate('Checkout')}
-        />
-      </View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View>
+          <AccountSummary />
+          <CenteredButton
+            text="Checkout"
+            onPress={() => navigation.navigate('Checkout')}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 };
