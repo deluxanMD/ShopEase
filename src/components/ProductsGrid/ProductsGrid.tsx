@@ -15,6 +15,7 @@ const ProductsGrid = ({products}: Props) => {
         data={products}
         keyExtractor={item => item.id.toString()}
         numColumns={2}
+        showsVerticalScrollIndicator={false}
         renderItem={({item}) => (
           <View key={item.id} style={styles.item}>
             <ProductPortrait product={item} />

@@ -11,6 +11,7 @@ import CategoriesScreen from '../screens/Categories/CategoriesScreen';
 import ProductDetailsScreen from '../screens/ProductDetails/ProductDetailsScreen';
 import CheckoutScreen from '../screens/Checkout/CheckoutScreen';
 import OrderPlacedScreen from '../screens/OrderPlaced/OrderPlacedScreen';
+import CategoriesGrid from '../components/CategoriesGrid/CategoriesGrid';
 
 export type RootStackParamList = {
   Login: undefined;
@@ -21,6 +22,9 @@ export type RootStackParamList = {
   };
   Checkout: undefined;
   PlaceOrder: undefined;
+  CategoriesGrid: {
+    category: string;
+  };
 };
 
 export type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -42,6 +46,7 @@ const StackNavigation = () => {
       />
       <Stack.Screen name="Checkout" component={CheckoutScreen} />
       <Stack.Screen name="PlaceOrder" component={OrderPlacedScreen} />
+      <Stack.Screen name="CategoriesGrid" component={CategoriesGrid} />
     </Stack.Navigator>
   );
 };
