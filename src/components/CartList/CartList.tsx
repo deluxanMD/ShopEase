@@ -1,11 +1,18 @@
-import {View, Text, FlatList, Image} from 'react-native';
+import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import React, {useMemo} from 'react';
 
 import styles from './CartListStyles';
 import {useProductPrice} from '../ProductInfo/ProductInfoHooks';
 import CustomButton from '../CustomButton/CustomButton';
 import {useDispatch} from 'react-redux';
-import {CartItem, updateQuantity} from '../../store/cart/CartSlice';
+import {
+  CartItem,
+  removeItemFromCart,
+  updateQuantity,
+} from '../../store/cart/CartSlice';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faTrashAlt} from '@fortawesome/free-regular-svg-icons/faTrashAlt';
+import {colors} from '../../utils/colors';
 
 interface CartListItemProps {
   product: CartItem;
@@ -57,12 +64,19 @@ const CartListItem = ({product}: CartListItemProps) => {
           <Text style={styles.title} numberOfLines={1}>
             {product.title}
           </Text>
-          <Text>X{product.quantity}</Text>
+          <TouchableOpacity
+            onPress={() => dispatch(removeItemFromCart(product?.id))}>
+            <FontAwesomeIcon icon={faTrashAlt} color={colors.error} />
+          </TouchableOpacity>
         </View>
         <View style={styles.titleContainer}>
           <Text style={styles.price}>
-            ${Number(discountedPrice) * product.quantity}
+            ${(Number(discountedPrice) * product.quantity).toFixed(2)}
           </Text>
+          <Text
+            style={
+              styles.discountedPrice
+            }>{`(${discountedPrice}X${product.quantity})`}</Text>
           <View style={styles.quantityContainer}>
             <CustomButton
               title="-"

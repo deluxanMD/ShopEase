@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   title: {
     fontSize: 14,
@@ -33,6 +34,9 @@ const styles = StyleSheet.create({
   },
   price: {
     fontWeight: 'bold',
+  },
+  discountedPrice: {
+    fontSize: 12,
   },
   quantityContainer: {
     width: 60,
